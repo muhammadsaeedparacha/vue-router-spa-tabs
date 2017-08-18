@@ -9,16 +9,16 @@ exports.tabs = function (store, router, options) {
       'tabCreate': function (state, to) {
         state[to.meta.tab] = to.path
       },
-      'tabDelete' : function (state, tabName) {
-        delete state[tab]
+      'tabDelete' : function (state, tabIndex) {
+        delete state[tabIndex]
       }
     },
     actions: {
       'routeChanged': function ({state,commit}, to) {
         commit('tabCreate', to)
       },
-      'tabDelete': function ({commit}, tabName) {
-        commit('tabDelete', tabName)
+      'tabDelete': function ({commit}, tabIndex) {
+        commit('tabDelete', tabIndex)
       }
     }
   })
