@@ -1,56 +1,38 @@
-'use strict'
+import Vue from 'vue'
+exports.tabs = function (store, router, options) {
+  var moduleName = (options || {}).moduleName || 'tabs'
 
-import store from 'vuex'
-class Vue-Router-Tabs {
-
-    set router(router) {
-        router.beforeEach((to, from, next) => {
-            const tab = to.meta.tab || false
-            if (tab)
-                return next(fail)
-            else {
-                if (!this.check(to.meta.permission))
-                    return next(fail)
-                next()
-            }
-        })
-    }
-    init(router) {
-        this.router = router
-        this.store = store
-    }
-
-}
-
-let tabs = new Vue-Router-Tabs()
-
-Tabs.install = function (Vue, {router, store}) {
-
-    acl.init(router, store)
-
-    Vue.prototype.$tabs = function (tab = null) {
-        if (tab != null) {
-            if (Array.isArray(tab))
-                tabs.tabs = tabs.tabs + tab
-            else
-                tabs.tabs = tabs.tabs + [tab]
+  store.registerModule(moduleName, {
+    namespaced: true,
+    state: [],
+    mutations: {
+      'tabCreate': function (state, to) {
+        state[to.meta.tab] = to.path
+      },
+      'tabDelete' : function (state, tabName) {
+        foreach (state as tab => path ) {
+          if (tab == tabName) {
+            delete state[tab]
+            // state.$remove(tab)
+          }
         }
-        else
-            return tabs.tabs
-    }
-
-    Vue.prototype.$access = function (newAccess = null) {
-        if (newAccess != null) {
-            if (Array.isArray(newAccess))
-                acl.permissions = newAccess
-            else if (newAccess.indexOf('&') !== -1)
-                acl.permissions = newAccess.split('&')
-            else
-                acl.permissions = [newAccess]
+      }
+    },
+    actions: {
+      'routeChanged': function ({state,commit}, to) {
+        if(!state[to.meta.tab]){
+          commit('tabCreate', to)
+        },
+        'tabDelete': function ({commit}, tabName) {
+          commit('tabDelete', tabName)
         }
-        else
-            return acl.permissions
+      }
     }
-}
+  })
 
-export default Tabs
+  router.afterEach((to, from) => {
+    const tab = to.meta.tab || false
+    if (tab)
+      store.dispatch(moduleName + '/routeChanged', to)
+  })
+}
