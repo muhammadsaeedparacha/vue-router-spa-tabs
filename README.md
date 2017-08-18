@@ -4,10 +4,11 @@ npm install vue-router-spa-tabs
 ```
 ## Usage 
 #### 1) `Routes.js`
+```js
 export const routes = [
 {path: '/', component: App, name: 'home', meta: {tab: 'Dashboard', breadcrumb: 'Dashboard', permission: '', fail: '/login'}}
 ];
-
+```
 #### 2) `example.vue`
 ```html
 <template>
