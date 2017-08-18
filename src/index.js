@@ -22,7 +22,7 @@ exports.tabs = function (store, router, options) {
       'routeChanged': function ({state,commit}, to) {
         if(!state[to.meta.tab]){
           commit('tabCreate', to)
-        },
+        }
       },
       'tabDelete': function ({commit}, tabName) {
         commit('tabDelete', tabName)
