@@ -10,12 +10,12 @@ exports.tabs = function (store, router, options) {
         state[to.meta.tab] = to.path
       },
       'tabDelete' : function (state, tabName) {
-        foreach (state as tab => path ) {
-          if (tab == tabName) {
-            delete state[tab]
-            // state.$remove(tab)
-          }
-        }
+        // foreach (state as tab => path ) {
+        //   if (tab == tabName) {
+        //     delete state[tab]
+        //     // state.$remove(tab)
+        //   }
+        // }
       }
     },
     actions: {
@@ -23,14 +23,14 @@ exports.tabs = function (store, router, options) {
         if(!state[to.meta.tab]){
           commit('tabCreate', to)
         },
-        'tabDelete': function ({commit}, tabName) {
-          commit('tabDelete', tabName)
-        }
+      },
+      'tabDelete': function ({commit}, tabName) {
+        commit('tabDelete', tabName)
       }
     }
   })
 
-  router.afterEach((to, from) => {
+  router.afterEach(function (to, from) {
     const tab = to.meta.tab || false
     if (tab)
       store.dispatch(moduleName + '/routeChanged', to)
