@@ -20,5 +20,9 @@
     "Vuex"
   ],
   "author": "Muhammad Saeed Paracha",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "dependencies": {
+    "draggabilly": "^2.1.1",
+    "vue": "^2.4.2"
+  }
 }

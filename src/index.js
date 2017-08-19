@@ -1,31 +1,47 @@
-import Vue from 'vue'
+import ChromeTabs from './vueChromeTabs'
+window.Draggabilly = require('draggabilly')
 exports.tabs = function (store, router, options) {
   var moduleName = (options || {}).moduleName || 'tabs'
-
+  // var chromeTabs = new ChromeTabs()
   store.registerModule(moduleName, {
-    namespaced: true,
-    state: {},
+    // namespaced: true,
+    state: {chromeTabs: new ChromeTabs(), tabsList: {}},
     mutations: {
       'tabCreate': function (state, to) {
-        state[to.meta.tab] = to.path
+        Vue.set()
+        state[to.name] = to.meta.tab
       },
       'tabDelete' : function (state, tabIndex) {
-        delete state[tabIndex]
-      }
+        Vue.delete(state,tabIndex)
+      },
     },
     actions: {
-      'routeChanged': function ({state,commit}, to) {
+      'routeChanged': function ({commit, dispatch}, to) {
         commit('tabCreate', to)
+        this.chromeTabs.tabAdded(to.name)
       },
-      'tabDelete': function ({commit}, tabIndex) {
+      'tabDelete': function ({commit, dispatch}, tabIndex) {
         commit('tabDelete', tabIndex)
-      }
+        router.push(this.chromeTabs.tabDeleted(tabIndex))
+      },
+      'tabsInit': function ({}, payload}){
+        var el = document.querySelector('.chrome-tabs')
+        if(payload){
+          this.chromeTabs.init(el, payload)
+        } else {
+          this.chromeTabs.init(el, {
+            tabOverlapDistance: 14,
+            minWidth: 45,
+            maxWidth: 243
+          })
+        }
+      },
     }
   })
   router.afterEach(function (to, from) {
     const tab = to.meta.tab || false
     if (tab){
-      store.dispatch(moduleName + '/routeChanged', to)
+      store.dispatch('routeChanged', to)
     }
   })
 }
