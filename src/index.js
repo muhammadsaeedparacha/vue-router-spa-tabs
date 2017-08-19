@@ -21,7 +21,7 @@ exports.tabs = function (store, router, options) {
       },
       'tabDelete': function ({commit, dispatch}, tabIndex) {
         commit('tabDelete', tabIndex)
-        window.router.push(this.chromeTabs.tabDeleted(tabIndex))
+        router.push(this.chromeTabs.tabDeleted(tabIndex))
       },
       'tabsInit': function ({}, payload){
         var el = document.querySelector('.chrome-tabs')
