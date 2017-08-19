@@ -8,11 +8,10 @@ exports.tabs = function (store, router, options) {
     state: {chromeTabs: new ChromeTabs(), tabsList: {}},
     mutations: {
       'tabCreate': function (state, to) {
-        Vue.set()
-        state[to.name] = to.meta.tab
+        Vue.set(state.tabsList, to.name, to.meta.tab)
       },
       'tabDelete' : function (state, tabIndex) {
-        Vue.delete(state,tabIndex)
+        Vue.delete(state.tabsList,tabIndex)
       },
     },
     actions: {
