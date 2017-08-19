@@ -132,7 +132,7 @@
 	// 	return div.firstElementChild
 	// }
 	tabAdded(tabIndex){
-		const tabEL = this.el.querySelector('#' + tabIndex)
+		const tabEl = this.el.querySelector('#' + tabIndex)
 		tabEl.classList.add('chrome-tab-just-added')
 		setTimeout(() => tabEl.classList.remove('chrome-tab-just-added'), 500)
 		this.setCurrentTab(tabEl)
