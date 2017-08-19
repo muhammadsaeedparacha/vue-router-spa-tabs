@@ -31,12 +31,15 @@ exports.tabs = function (store, router, options) {
           ChromeTabs.refreshTabs()
           return
         }
-        if (!document.querySelector('.chrome-tabs').querySelector('#' + state.updating))
+        if (!document.querySelector('.chrome-tabs #' + state.updating))
         {
           setTimeout(() => {
             dispatch('tabUpdate', count + 1)
           }, 100)
           return
+        }
+        if(!ChromeTabs.el){
+          dispatch('tabinit')
         }
         ChromeTabs.tabAdded(state.updating)
         commit('tabUpdated')
@@ -50,9 +53,9 @@ exports.tabs = function (store, router, options) {
       },
       'tabsInit': function ({state, dispatch}, payload){
         var el = document.querySelector('.chrome-tabs')
-        if(payload){
+        if(payload && !ChromeTabs.el){
           ChromeTabs.init(el, payload)
-        } else {
+        } elseif (!ChromeTabs.el) {
           ChromeTabs.init(el, {
             tabOverlapDistance: 14,
             minWidth: 45,

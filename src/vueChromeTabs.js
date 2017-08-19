@@ -23,6 +23,7 @@
 		}
 
 		init(el, options) {
+			console.log("Debug: ChromeTab init")
 			this.el = el
 			this.options = options
 
@@ -131,6 +132,7 @@
 	// 	return div.firstElementChild
 	// }
 	tabAdded(tabIndex){
+		console.log("Debug: TabAdded Chrometab")
 		// console.log("Index for tabAdded: ", tabIndex)
 		// console.log("this.el: ", this.el)
 		const tabEl = this.el.querySelector('#' + tabIndex)
@@ -142,6 +144,7 @@
 	}
 
 	refreshTabs(){
+		console.log("Debug: Refresh Tabs ChromeTab")
 		this.layoutTabs()
 		this.fixZIndexes()
 		this.setupDraggabilly()
@@ -164,6 +167,7 @@
 
 
 	setCurrentTab(tabEl) {
+		console.log("Debug: Set Current Tab ChromeTab")
 		const currentTab = this.el.querySelector('.chrome-tab-current')
 		if (currentTab)
 			currentTab.classList.remove('chrome-tab-current')
@@ -172,6 +176,7 @@
 		this.emit('activeTabChange', { tabEl })
 	}
 	tabDeleted(tabIndex){
+		console.log("Debug: Tab Deleted Chrome Tab")
 		const tabEl = this.el.querySelector('#' + tabIndex)
 		if (tabEl.classList.contains('chrome-tab-current')) {
 			if (tabEl.previousElementSibling) {

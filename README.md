@@ -72,7 +72,7 @@ routes
 			</div>
 			<div class="chrome-tabs-bottom-bar"></div>
 		</div>
-		<keep-alive  :include="Object.values(tabs)">
+		<keep-alive  :include="Object.keys(tabs.tabsList)">
 			<!--<keep-alive  include="CustomersIndex,customers">-->
 			<router-view></router-view>
 		</keep-alive>
