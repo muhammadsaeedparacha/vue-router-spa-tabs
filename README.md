@@ -31,7 +31,15 @@ component.vue
 </script>
 ...
 ```
-#### 3) `example.vue`
+#### 3) Make vue-router available global
+`window.router =` rather than `router =` 
+```js
+window.router = new VueRouter({
+routes
+});
+```
+
+#### 4) `example.vue`
 ```html
 <template>
 	<div>
