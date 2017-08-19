@@ -9,8 +9,10 @@ exports.tabs = function (store, router, options) {
     state: {tabsList: {}, updating: ''},
     mutations: {
       'tabCreate': function (state, to) {
-        state.updating = to.name
-        Vue.set(state.tabsList, to.name, to.meta.tab)
+        if(!state[to.name]){
+          state.updating = to.name
+          Vue.set(state.tabsList, to.name, to.meta.tab)
+        }
       },
       'tabDelete' : function (state, tabIndex) {
         Vue.delete(state.tabsList,tabIndex)
@@ -25,8 +27,10 @@ exports.tabs = function (store, router, options) {
         dispatch('tabUpdate')
       },
       'tabUpdate': function ({state, commit, dispatch}, count = 1){
-        if(state.updating == '' || count == 10)
+        if(state.updating == '' || count == 10){
+          ChromeTabs.refreshTabs()
           return
+        }
         if (!document.querySelector('.chrome-tabs').querySelector('#' + state.updating))
         {
           setTimeout(() => {

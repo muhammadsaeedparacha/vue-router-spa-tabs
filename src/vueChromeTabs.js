@@ -175,9 +175,11 @@
 		const tabEl = this.el.querySelector('#' + tabIndex)
 		if (tabEl.classList.contains('chrome-tab-current')) {
 			if (tabEl.previousElementSibling) {
-				var currentTab = this.setCurrentTab(tabEl.previousElementSibling)
+				// var currentTab = this.setCurrentTab(tabEl.previousElementSibling)
+				var currentTab = tabEl.previousElementSibling
 			} else if (tabEl.nextElementSibling) {
-				var currentTab = this.setCurrentTab(tabEl.nextElementSibling)
+				// var currentTab = this.setCurrentTab(tabEl.nextElementSibling)
+				var currentTab = tabEl.nextElementSibling
 			}
 		}
 		this.refreshTabs()
