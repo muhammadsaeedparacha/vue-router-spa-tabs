@@ -112,7 +112,7 @@
 			this.animationStyleEl.innerHTML = styleHTML
 		})
 		if (currentTab)
-			tabEl.classList.add('chrome-tab-current')
+			currentTab.classList.add('chrome-tab-current')
 	}
 
 	fixZIndexes() {
