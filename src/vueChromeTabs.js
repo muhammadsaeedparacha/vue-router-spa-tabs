@@ -134,7 +134,6 @@
 	tabAdded(tabIndex){
 		console.log("Index for tabAdded: ", tabIndex)
 		console.log("this.el: ", this.el)
-		const tabEl = this.el.querySelector('#' + tabIndex)
 		console.log("tabEl in tabAdded: ", tabEl)
 		tabEl.classList.add('chrome-tab-just-added')
 		setTimeout(() => tabEl.classList.remove('chrome-tab-just-added'), 500)

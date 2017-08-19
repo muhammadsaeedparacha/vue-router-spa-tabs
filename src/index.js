@@ -24,13 +24,13 @@ exports.tabs = function (store, router, options) {
         commit('tabCreate', to)
         dispatch('tabUpdate')
       },
-      'tabUpdate': function ({state, commit, dispatch}){
-        if(state.updating == '')
+      'tabUpdate': function ({state, commit, dispatch}, count = 1){
+        if(state.updating == '' || count == 10)
           return
         if (!document.querySelector('.chrome-tabs').querySelector('#' + state.updating))
         {
           setTimeout(() => {
-            dispatch('tabUpdate')
+            dispatch('tabUpdate', count + 1)
           }, 100)
           return
         }
