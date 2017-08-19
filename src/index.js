@@ -1,11 +1,12 @@
 import ChromeTabs from './vueChromeTabs'
 window.Draggabilly = require('draggabilly')
+window.ChromeTabs = new ChromeTabs()
 exports.tabs = function (store, router, options) {
   var moduleName = (options || {}).moduleName || 'tabs'
   // var chromeTabs = new ChromeTabs()
   store.registerModule(moduleName, {
     // namespaced: true,
-    state: {chromeTabs: new ChromeTabs(), tabsList: {}},
+    state: {chromeTabs: ChromeTabs, tabsList: {}},
     mutations: {
       'tabCreate': function (state, to) {
         Vue.set(state.tabsList, to.name, to.meta.tab)

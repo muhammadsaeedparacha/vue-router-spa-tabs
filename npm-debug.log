@@ -1,0 +1,110 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish' ]
+2 info using npm@3.10.3
+3 info using node@v6.6.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: 'C:\\xampp2\\htdocs\\github\\vue-router-spa-tabs',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory C:\Users\hp\AppData\Roaming\npm-cache\vue-router-spa-tabs\1.1.5\package.tgz not in flight; packing
+9 verbose correctMkdir C:\Users\hp\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+10 info lifecycle vue-router-spa-tabs@1.1.5~prepublish: vue-router-spa-tabs@1.1.5
+11 silly lifecycle vue-router-spa-tabs@1.1.5~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ 'C:\\Users\\hp\\AppData\\Roaming\\npm-cache\\vue-router-spa-tabs\\1.1.5\\package.tgz',
+12 verbose tar pack   'C:\\xampp2\\htdocs\\github\\vue-router-spa-tabs' ]
+13 verbose tarball C:\Users\hp\AppData\Roaming\npm-cache\vue-router-spa-tabs\1.1.5\package.tgz
+14 verbose folder C:\xampp2\htdocs\github\vue-router-spa-tabs
+15 verbose addLocalTarball adding from inside cache C:\Users\hp\AppData\Roaming\npm-cache\vue-router-spa-tabs\1.1.5\package.tgz
+16 verbose correctMkdir C:\Users\hp\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+17 silly cache afterAdd vue-router-spa-tabs@1.1.5
+18 verbose afterAdd C:\Users\hp\AppData\Roaming\npm-cache\vue-router-spa-tabs\1.1.5\package\package.json not in flight; writing
+19 verbose correctMkdir C:\Users\hp\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+20 verbose afterAdd C:\Users\hp\AppData\Roaming\npm-cache\vue-router-spa-tabs\1.1.5\package\package.json written
+21 silly publish { name: 'vue-router-spa-tabs',
+21 silly publish   version: '1.1.5',
+21 silly publish   description: 'Tabbed Navigation for Vue Router in Single Page Applications',
+21 silly publish   main: 'src/index.js',
+21 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/muhammadsaeedparacha/vue-router-spa-tabs.git' },
+21 silly publish   keywords: [ 'Vue', 'Router', 'SPA', 'Tabs', 'Navigation', 'Vue', 'Vuex' ],
+21 silly publish   author: { name: 'Muhammad Saeed Paracha' },
+21 silly publish   license: 'Apache-2.0',
+21 silly publish   dependencies: { draggabilly: '^2.1.1', vue: '^2.4.2' },
+21 silly publish   readme: '## Package Incomplete and Broken\r\n## Description\r\nThis Package is used to make your Application tabular, like chrome or sublime text. It achieves this by keeping a track of which routes do you want to open in tabs, opens those routes in tabs, and keeps alive those tabs so they are not rerendered everytime they open.\r\nBased on an amazing package by [adamschwartz/chrome-tabs](https://github.com/adamschwartz/chrome-tabs) but molded for Vue Router\r\n\r\nNote: Works best with socket implementation which updates the tabs on the fly for new data otherwise it would require to close and reopen the tab for rerendering it based on new data from server / database.\r\n\r\n## Installation\r\n```js\r\nnpm install vue-router-spa-tabs\r\n```\r\n## Usage \r\n#### 1) Initialize the Package\r\napp.js\r\n```js\r\nimport {tabs} from \'vue-router-spa-tabs\'\r\ntabs(store, router)\r\n```\r\napp.css\r\n```scss\r\n@import "node_modules/vue-router-spa-tabs/src/css/chromeTabs.css";\r\n```\r\nor copy paste css from file\r\n\r\n#### 1) `Routes.js`\r\nRoutes should include `name` and `meta.tab` with tab value is what will be displayed in the Tab Title\r\n```js\r\nexport const routes = [\r\n{path: \'/\', component: App, name: \'home\', meta: {tab: \'Dashboard\'}}\r\n];\r\n```\r\n\r\n#### 2) Component Name = Router Link Name\r\nrouter.js\r\n```js\r\n{path: \'/\', name: \'home\'}\r\n```\r\n\r\ncomponent.vue\r\n```js\r\n...\r\n<script>\r\n\texport default {\r\n\t\tname: \'home\'\r\n\t}\r\n</script>\r\n...\r\n```\r\n\r\n#### 3) Make vue-router available global\r\n`window.router =` rather than `router =` \r\n```js\r\nwindow.router = new VueRouter({\r\nroutes\r\n});\r\n```\r\n\r\n#### 4) `example.vue`\r\n```html\r\n<template>\r\n\t<div>\r\n\t\t<div class="chrome-tabs">\r\n\t\t\t<div class="chrome-tabs-content">\r\n\t\t\t\t<router-link @click="chromeTabs.refreshTabs()" tag="div" v-for="(tab, index) in tabs.tabsList" :to="{name: index}" :id="index" exact-active-class="chrome-tab-current" class="chrome-tab">\r\n\t\t\t\t\t<div class="chrome-tab-background">\r\n\t\t\t\t\t\t<svg version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><symbol id="topleft" viewBox="0 0 214 29" ><path d="M14.3 0.1L214 0.1 214 29 0 29C0 29 12.2 2.6 13.2 1.1 14.3-0.4 14.3 0.1 14.3 0.1Z"/></symbol><symbol id="topright" viewBox="0 0 214 29"><use xlink:href="#topleft"/></symbol><clipPath id="crop"><rect class="mask" width="100%" height="100%" x="0"/></clipPath></defs><svg width="50%" height="100%" transfrom="scale(-1, 1)"><use xlink:href="#topleft" width="214" height="29" class="chrome-tab-background"/><use xlink:href="#topleft" width="214" height="29" class="chrome-tab-shadow"/></svg><g transform="scale(-1, 1)"><svg width="50%" height="100%" x="-100%" y="0"><use xlink:href="#topright" width="214" height="29" class="chrome-tab-background"/><use xlink:href="#topright" width="214" height="29" class="chrome-tab-shadow"/></svg></g></svg>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class="chrome-tab-favicon" style="background-image: url(\'demo/images/facebook-favicon.ico\')"></div>\r\n\t\t\t\t\t<div class="chrome-tab-title">{{tab}}</div>\r\n\t\t\t\t\t<div class="chrome-tab-close" @click="tabDelete(index)"></div>\r\n\t\t\t\t</router-link>\r\n\t\t\t</div>\r\n\t\t\t<div class="chrome-tabs-bottom-bar"></div>\r\n\t\t</div>\r\n\t\t<keep-alive  :include="Object.values(tabs)">\r\n\t\t\t<!--<keep-alive  include="CustomersIndex,customers">-->\r\n\t\t\t<router-view></router-view>\r\n\t\t</keep-alive>\r\n\t</div>\r\n</template>\r\n\r\n<script>\r\n\timport {mapState, mapActions} from \'vuex\'\r\n\timport tabs from \'vue-router-spa-tabs\'\r\n\texport default{\r\n\t\tcomputed:{\r\n\t\t\t...mapState([\r\n\t\t\t\t\'tabs\',\r\n\t\t\t\t]),\r\n\t\t},\r\n\t\tmethods: {\r\n\t\t\t...mapActions([\r\n\t\t\t\t\'tabDelete\',\r\n\t\t\t\t\'tabsInit\'\r\n\t\t\t\t])\r\n\t\t}\r\n\t}\r\n</script>\r\n```',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '0fb822c994c0a24f4058ee2c15cdab4312e72006',
+21 silly publish   bugs: { url: 'https://github.com/muhammadsaeedparacha/vue-router-spa-tabs/issues' },
+21 silly publish   homepage: 'https://github.com/muhammadsaeedparacha/vue-router-spa-tabs#readme',
+21 silly publish   _id: 'vue-router-spa-tabs@1.1.5',
+21 silly publish   _shasum: 'd05c234430c595b5ccd78d49be93a329abd69321',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name vue-router-spa-tabs
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'vue-router-spa-tabs',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'vue-router-spa-tabs',
+26 silly mapToRegistry   name: 'vue-router-spa-tabs',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/vue-router-spa-tabs
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading C:\Users\hp\AppData\Roaming\npm-cache\vue-router-spa-tabs\1.1.5\package.tgz
+30 verbose request uri https://registry.npmjs.org/vue-router-spa-tabs
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 10:55:44 AM
+33 verbose request using bearer token for auth
+34 verbose request id b5303398a37345d3
+35 http request PUT https://registry.npmjs.org/vue-router-spa-tabs
+36 http 403 https://registry.npmjs.org/vue-router-spa-tabs
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '95',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Sat, 19 Aug 2017 05:55:45 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-cdg8723-CDG',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1503122144.414504,VS0,VE1074',
+37 verbose headers   vary: 'Accept-Encoding, Accept' }
+38 verbose request invalidating C:\Users\hp\AppData\Roaming\npm-cache\registry.npmjs.org\vue-router-spa-tabs on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 1.1.5." : vue-router-spa-tabs
+40 verbose stack     at makeError (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:264:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:252:14)
+40 verbose stack     at Request._callback (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:172:14)
+40 verbose stack     at Request.self.callback (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:200:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1067:10)
+40 verbose stack     at emitOne (events.js:101:20)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:988:12)
+41 verbose statusCode 403
+42 verbose pkgid vue-router-spa-tabs
+43 verbose cwd C:\xampp2\htdocs\github\vue-router-spa-tabs
+44 error Windows_NT 10.0.15063
+45 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+46 error node v6.6.0
+47 error npm  v3.10.3
+48 error code E403
+49 error "You cannot publish over the previously published version 1.1.5." : vue-router-spa-tabs
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]
