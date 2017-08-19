@@ -42,7 +42,7 @@ exports.tabs = function (store, router, options) {
         {
           setTimeout(() => {
             dispatch('tabUpdate', count + 1)
-          }, i * 100)
+          }, count * 100)
           return
         }
         ChromeTabs.tabAdded(state.updating)
