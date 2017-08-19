@@ -139,7 +139,7 @@
 		// console.log("tabEl in tabAdded: ", tabEl)
 		tabEl.classList.add('chrome-tab-just-added')
 		setTimeout(() => tabEl.classList.remove('chrome-tab-just-added'), 500)
-		this.setCurrentTab(tabEl)
+		// this.setCurrentTab(tabEl)
 		this.refreshTabs()
 	}
 
