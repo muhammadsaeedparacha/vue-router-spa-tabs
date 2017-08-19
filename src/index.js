@@ -16,20 +16,20 @@ exports.tabs = function (store, router, options) {
       },
     },
     actions: {
-      'routeChanged': function ({commit, dispatch}, to) {
+      'routeChanged': function ({state,commit, dispatch}, to) {
         commit('tabCreate', to)
-        this.chromeTabs.tabAdded(to.name)
+        state.chromeTabs.tabAdded(to.name)
       },
-      'tabDelete': function ({commit, dispatch}, tabIndex) {
+      'tabDelete': function ({state, commit, dispatch}, tabIndex) {
         commit('tabDelete', tabIndex)
-        router.push(this.chromeTabs.tabDeleted(tabIndex))
+        router.push(state.chromeTabs.tabDeleted(tabIndex))
       },
-      'tabsInit': function ({}, payload){
+      'tabsInit': function ({state}, payload){
         var el = document.querySelector('.chrome-tabs')
         if(payload){
-          this.chromeTabs.init(el, payload)
+          state.chromeTabs.init(el, payload)
         } else {
-          this.chromeTabs.init(el, {
+          state.chromeTabs.init(el, {
             tabOverlapDistance: 14,
             minWidth: 45,
             maxWidth: 243
