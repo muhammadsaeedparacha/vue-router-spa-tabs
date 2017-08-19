@@ -24,9 +24,16 @@ exports.tabs = function (store, router, options) {
         commit('tabCreate', to)
         dispatch('tabUpdate')
       },
-      'tabUpdate': function ({state, commit}){
+      'tabUpdate': function ({state, commit, dispatch}){
         if(state.updating == '')
           return
+        if (!document.querySelector('.chrome-tabs').querySelector('#' + state.updating))
+        {
+          setTimeout(() => {
+            dispatch('tabUpdate')
+          }, 100)
+          return
+        }
         ChromeTabs.tabAdded(state.updating)
         commit('tabUpdated')
       },
