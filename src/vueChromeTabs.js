@@ -179,7 +179,6 @@
 			}
 		}
 		this.refreshTabs()
-		return this.el.querySelector('.chrome-tab-current').id
 	}
 	// removeTab(tabEl) {
 	// 	if (tabEl.classList.contains('chrome-tab-current')) {
