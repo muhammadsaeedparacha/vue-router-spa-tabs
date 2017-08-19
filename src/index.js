@@ -25,7 +25,7 @@ exports.tabs = function (store, router, options) {
         dispatch('tabUpdate')
       },
       'tabUpdate': function ({state, commit}){
-        if(state.updating = '')
+        if(state.updating == '')
           return
         ChromeTabs.tabAdded(state.updating)
         commit('tabUpdated')
