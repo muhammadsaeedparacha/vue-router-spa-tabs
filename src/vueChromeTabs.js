@@ -170,7 +170,7 @@
 		this.emit('activeTabChange', { tabEl })
 	}
 	tabDeleted(tabIndex){
-		const tabEL = this.el.querySelector('#' + tabIndex)
+		const tabEl = this.el.querySelector('#' + tabIndex)
 		if (tabEl.classList.contains('chrome-tab-current')) {
 			if (tabEl.previousElementSibling) {
 				this.setCurrentTab(tabEl.previousElementSibling)
