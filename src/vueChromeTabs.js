@@ -176,12 +176,13 @@
 		const tabEl = this.el.querySelector('#' + tabIndex)
 		if (tabEl.classList.contains('chrome-tab-current')) {
 			if (tabEl.previousElementSibling) {
-				this.setCurrentTab(tabEl.previousElementSibling)
+				var currentTab = this.setCurrentTab(tabEl.previousElementSibling)
 			} else if (tabEl.nextElementSibling) {
-				this.setCurrentTab(tabEl.nextElementSibling)
+				var currentTab = this.setCurrentTab(tabEl.nextElementSibling)
 			}
 		}
 		this.refreshTabs()
+		return currentTab.id
 	}
 	// removeTab(tabEl) {
 	// 	if (tabEl.classList.contains('chrome-tab-current')) {
