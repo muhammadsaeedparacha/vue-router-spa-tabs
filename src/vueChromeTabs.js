@@ -181,9 +181,11 @@
 				// var currentTab = this.setCurrentTab(tabEl.nextElementSibling)
 				var currentTab = tabEl.nextElementSibling
 			}
+			this.refreshTabs()
+			return currentTab.id
 		}
 		this.refreshTabs()
-		return currentTab.id
+		return tabIndex
 	}
 	// removeTab(tabEl) {
 	// 	if (tabEl.classList.contains('chrome-tab-current')) {
