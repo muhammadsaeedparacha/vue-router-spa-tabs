@@ -67,7 +67,7 @@ routes
 					</div>
 					<div class="chrome-tab-favicon" style="background-image: url('demo/images/facebook-favicon.ico')"></div>
 					<div class="chrome-tab-title">{{tab}}</div>
-					<div class="chrome-tab-close" @click="tabDelete(index)"></div>
+					<div class="chrome-tab-close" @click.stop="tabDelete(index)"></div>
 				</router-link>
 			</div>
 			<div class="chrome-tabs-bottom-bar"></div>

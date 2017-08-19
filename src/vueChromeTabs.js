@@ -23,7 +23,6 @@
 		}
 
 		init(el, options) {
-			console.log("Chrome Tabs init")
 			this.el = el
 			this.options = options
 
