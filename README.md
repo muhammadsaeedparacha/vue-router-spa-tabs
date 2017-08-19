@@ -66,6 +66,7 @@ component.vue
 		},
 		methods: {
 			...mapActions([
+				'tabDelete',
 				'tabsInit'
 				])
 		}
