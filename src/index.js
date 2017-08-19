@@ -29,7 +29,7 @@ exports.tabs = function (store, router, options) {
           return
         ChromeTabs.tabAdded(state.updating)
         commit('tabUpdated')
-      }
+      },
       'tabDelete': function ({state, commit, dispatch}, tabIndex) {
         ChromeTabs.tabDeleted(tabIndex)
         commit('tabDelete', tabIndex)
