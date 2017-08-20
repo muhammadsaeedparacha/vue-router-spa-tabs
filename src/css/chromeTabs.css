@@ -72,8 +72,11 @@
 .chrome-tabs .chrome-tab.chrome-tab-current .chrome-tab-background > svg .chrome-tab-background {
   fill: #f2f2f2;
 }
+.chrome-tabs .chrome-tab.chrome-tab-current .chrome-tab-background > svg .chrome-tab-background:hover {
+  fill: #d9d9d9;
+}
 .chrome-tabs .chrome-tab.chrome-tab-just-added {
-  top: 10px;
+  top: 8em;
   animation: chrome-tab-just-added 120ms forwards ease-in-out;
 }
 @-moz-keyframes chrome-tab-just-added {

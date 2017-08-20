@@ -95,9 +95,6 @@
 
 	layoutTabs() {
 		const tabWidth = this.tabWidth
-		const currentTab = this.el.querySelector('.chrome-tab-current')
-		if (currentTab)
-			currentTab.classList.remove('chrome-tab-current')
 		this.cleanUpPreviouslyDraggedTabs()
 		this.tabEls.forEach((tabEl) => tabEl.style.width = tabWidth + 'px')
 		requestAnimationFrame(() => {
@@ -111,8 +108,6 @@
 			})
 			this.animationStyleEl.innerHTML = styleHTML
 		})
-		if (currentTab)
-			currentTab.classList.add('chrome-tab-current')
 	}
 
 	fixZIndexes() {
@@ -170,15 +165,15 @@
 	// }
 
 
-	setCurrentTab(tabEl) {
-		console.log("Debug: Set Current Tab ChromeTab")
-		const currentTab = this.el.querySelector('.chrome-tab-current')
-		if (currentTab)
-			currentTab.classList.remove('chrome-tab-current')
-		tabEl.classList.add('chrome-tab-current')
-		this.fixZIndexes()
-		this.emit('activeTabChange', { tabEl })
-	}
+	// setCurrentTab(tabEl) {
+	// 	console.log("Debug: Set Current Tab ChromeTab")
+	// 	const currentTab = this.el.querySelector('.chrome-tab-current')
+	// 	if (currentTab)
+	// 		currentTab.classList.remove('chrome-tab-current')
+	// 	tabEl.classList.add('chrome-tab-current')
+	// 	this.fixZIndexes()
+	// 	this.emit('activeTabChange', { tabEl })
+	// }
 	tabDeleted(tabIndex){
 		console.log("Debug: Tab Deleted Chrome Tab")
 		const tabEl = this.el.querySelector('#' + tabIndex)
