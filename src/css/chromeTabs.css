@@ -43,7 +43,7 @@
 .chrome-tabs .chrome-tab,
 .chrome-tabs .chrome-tab * {
   user-select: none;
-  cursor: default;
+  cursor: pointer;
 }
 .chrome-tabs .chrome-tab .chrome-tab-background {
   position: absolute;

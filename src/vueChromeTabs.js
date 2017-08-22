@@ -165,21 +165,21 @@
 	// }
 
 
-	// setCurrentTab(tabEl) {
+	setCurrentTab(tabEl) {
 	// 	console.log("Debug: Set Current Tab ChromeTab")
 	// 	const currentTab = this.el.querySelector('.chrome-tab-current')
 	// 	if (currentTab)
 	// 		currentTab.classList.remove('chrome-tab-current')
 	// 	tabEl.classList.add('chrome-tab-current')
-	// 	this.fixZIndexes()
+	this.fixZIndexes()
 	// 	this.emit('activeTabChange', { tabEl })
-	// }
-	tabDeleted(tabIndex){
-		console.log("Debug: Tab Deleted Chrome Tab")
-		const tabEl = this.el.querySelector('#' + tabIndex)
-		var currentTab = tabIndex
-		if (tabEl.classList.contains('chrome-tab-current')) {
-			if (tabEl.previousElementSibling) {
+}
+tabDeleted(tabIndex){
+	console.log("Debug: Tab Deleted Chrome Tab")
+	const tabEl = this.el.querySelector('#' + tabIndex)
+	var currentTab = tabIndex
+	if (tabEl.classList.contains('chrome-tab-current')) {
+		if (tabEl.previousElementSibling) {
 				// var currentTab = this.setCurrentTab(tabEl.previousElementSibling)
 				var currentTab = tabEl.previousElementSibling.id
 			} else if (tabEl.nextElementSibling) {
