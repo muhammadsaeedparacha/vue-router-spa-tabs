@@ -6,11 +6,11 @@ exports.tabs = function (store, router, options) {
   // var chromeTabs = new ChromeTabs()
   store.registerModule(moduleName, {
     // namespaced: true,
-    state: {tabsList: {}, updating: ''},
+    state: {tabsList: {}, 'updating': ''},
     mutations: {
       'tabCreate': function (state, to) {
         console.log("Debug: Tab Create Mutation")
-        Vue.set(state, updating, to.name)
+        Vue.set(state, 'updating', to.name)
         Vue.set(state.tabsList, to.name, to.meta.tab)
         
       },
@@ -20,7 +20,7 @@ exports.tabs = function (store, router, options) {
       },
       'tabUpdated': function (state){
         console.log("Debug: Tab Update Mutation")
-        Vue.set(state, updating, '')
+        Vue.set(state, 'updating', '')
       }
     },
     actions: {
