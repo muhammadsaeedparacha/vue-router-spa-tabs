@@ -10,8 +10,7 @@ exports.tabs = function (store, router, options) {
     mutations: {
       'tabCreate': function (state, to) {
         console.log("Debug: Tab Create Mutation")
-        
-        state.updating = to.name
+        Vue.set(state, updating, to.name)
         Vue.set(state.tabsList, to.name, to.meta.tab)
         
       },
@@ -21,16 +20,16 @@ exports.tabs = function (store, router, options) {
       },
       'tabUpdated': function (state){
         console.log("Debug: Tab Update Mutation")
-        state.updating = ''
+        Vue.set(state, updating, '')
       }
     },
     actions: {
       'tabCreate': function ({state, commit, dispatch}, to) {
         console.log("Debug: Tab Create Action")
-        if(!state[to.name]){
+        if(!state.tabsList[to.name]){
           commit('tabCreate', to)
-          dispatch('tabUpdate')
         }
+        dispatch('tabUpdate')
       },
       'tabUpdate': function ({state, commit, dispatch}, count = 1){
         console.log("Debug: Tab Update Action")
